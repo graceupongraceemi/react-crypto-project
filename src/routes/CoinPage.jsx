@@ -27,11 +27,13 @@ const CoinPage = () => {
         </div>
       </div>
 
-      <div>
+      <div className='grid md:grid-cols-2 gap-8'>
         <div>
-          <div>
+          <div className='flex justify-between'>
             {coin.market_data?.current_price ? (
-              <p>${coin.market_data.current_price.usd.toLocaleString()}</p>
+              <p className='text-3xl font-bold'>
+                ${coin.market_data.current_price.usd.toLocaleString()}
+              </p>
             ) : null}
             <p>7 Day</p>
           </div>
@@ -40,58 +42,57 @@ const CoinPage = () => {
               <SparklinesLine color='teal' />
             </Sparklines>
           </div>
-          <div>
+          <div className='flex justify-between py-4'>
             <div>
-              <p>Market Cap</p>
+              <p className='text-gray-500 text-sm'>Market Cap</p>
               {coin.market_data?.market_cap ? (
                 <p>${coin.market_data.market_cap.usd.toLocaleString()}</p>
               ) : null}
             </div>
             <div>
-              <p>Volume (24h)</p>
+              <p className='text-gray-500 text-sm'>Volume (24h)</p>
               {coin.market_data?.market_cap ? (
                 <p>${coin.market_data.total_volume.usd.toLocaleString()}</p>
               ) : null}
             </div>
           </div>
-        </div>
-        <div>
-          <div>
-            <p>24h High</p>
-            {coin.market_data?.high_24h ? (
-              <p>${coin.market_data.high_24h.usd.toLocaleString()}</p>
-            ) : null}
-          </div>
-          <div>
-            <p>24h Low</p>
-            {coin.market_data?.low_24h ? (
-              <p>${coin.market_data.low_24h.usd.toLocaleString()}</p>
-            ) : null}
-          </div>
-        </div>
-      </div>
 
-      <div>
-        <div>
-          <p>Market Stats</p>
-          <div>
+          <div className='flex justify-between py-4'>
             <div>
-              <p>Market Rank</p>
+              <p className='text-gray-500 text-sm'>24h High</p>
+              {coin.market_data?.high_24h ? (
+                <p>${coin.market_data.high_24h.usd.toLocaleString()}</p>
+              ) : null}
+            </div>
+            <div>
+              <p className='text-gray-500 text-sm'>24h Low</p>
+              {coin.market_data?.low_24h ? (
+                <p>${coin.market_data.low_24h.usd.toLocaleString()}</p>
+              ) : null}
+            </div>
+          </div>
+        </div>
+
+        <div>
+          <p className='text-xl font-bold'>Market Stats</p>
+          <div className='flex justify-between py-4'>
+            <div>
+              <p className='text-gray-500 text-sm'>Market Rank</p>
               {coin.market_cap_rank}
             </div>
             <div>
-              <p>Hashing Algorithm</p>
+              <p className='text-gray-500 text-sm'>Hashing Algorithm</p>
               {coin.hashing_algorithm ? <p>{coin.hashing_algorithm}</p> : null}
             </div>
             <div>
-              <p>Trust Score</p>
+              <p className='text-gray-500 text-sm'>Trust Score</p>
               {coin.tickers ? <p>{coin.liquidity_score.toFixed(2)}</p> : null}
             </div>
           </div>
 
-          <div>
+          <div className='flex justify-between py-4'>
             <div>
-              <p>Price Change (24h)</p>
+              <p className='text-gray-500 text-sm'>Price Change (24h)</p>
               {coin.market_data ? (
                 <p>
                   {coin.market_data.price_change_percentage_24h.toFixed(2)}%
@@ -99,13 +100,13 @@ const CoinPage = () => {
               ) : null}
             </div>
             <div>
-              <p>Price Change (7d)</p>
+              <p className='text-gray-500 text-sm'>Price Change (7d)</p>
               {coin.market_data ? (
                 <p>{coin.market_data.price_change_percentage_7d.toFixed(2)}%</p>
               ) : null}
             </div>
             <div>
-              <p>Price Change (14d)</p>
+              <p className='text-gray-500 text-sm'>Price Change (14d)</p>
               {coin.market_data ? (
                 <p>
                   {coin.market_data.price_change_percentage_14d.toFixed(2)}%
@@ -113,17 +114,19 @@ const CoinPage = () => {
               ) : null}
             </div>
           </div>
-          <div>
+
+          <div className='flex justify-between py-4'>
             <div>
-              <p>Price Change (30d)</p>
+              <p className='text-gray-500 text-sm'>Price Change (30d)</p>
               {coin.market_data ? (
                 <p>
                   {coin.market_data.price_change_percentage_30d.toFixed(2)}%
                 </p>
               ) : null}
             </div>
+
             <div>
-              <p>Price Change (60d)</p>
+              <p className='text-gray-500 text-sm'>Price Change (60d)</p>
               {coin.market_data ? (
                 <p>
                   {coin.market_data.price_change_percentage_60d.toFixed(2)}%
@@ -131,13 +134,14 @@ const CoinPage = () => {
               ) : null}
             </div>
             <div>
-              <p>Price Change (1y)</p>
+              <p className='text-gray-500 text-sm'>Price Change (1y)</p>
               {coin.market_data ? (
                 <p>{coin.market_data.price_change_percentage_1y.toFixed(2)}%</p>
               ) : null}
             </div>
           </div>
-          <div>
+
+          <div className='flex justify-around p-8 text-accent'>
             <FaTwitter />
             <FaFacebook />
             <FaReddit />
@@ -147,8 +151,8 @@ const CoinPage = () => {
       </div>
 
       {/*  Description */}
-      <div>
-        <p>About {coin.name}</p>
+      <div className='py-4'>
+        <p className='text-xl font-bold'>About {coin.name}</p>
         <p
           dangerouslySetInnerHTML={{
             __html: DOMPurify.sanitize(
