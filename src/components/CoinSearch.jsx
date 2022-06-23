@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import CoinItem from './Coinitem';
+import CoinItem from './CoinItem';
 
 const CoinSearch = ({ coins }) => {
   const [searchText, setSearchText] = useState('');
@@ -28,9 +28,9 @@ const CoinSearch = ({ coins }) => {
             <th></th>
             <th>Price</th>
             <th>24h</th>
-            <th>24h Volume</th>
+            <th className='hidden md:table-cell'>24h Volume</th>
             <th className='hidden md:table-cell'>Mkt</th>
-            <th className='hideen sm:table-cell'>Last 7 Days</th>
+            <th>Last 7 Days</th>
           </tr>
         </thead>
         <tbody>
